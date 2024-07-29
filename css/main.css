@@ -12,3 +12,36 @@ body {
 a {
     color: #454545;
 }
+
+code {
+    color: #454545;
+    background-color: #e5e5e5;
+    padding: 2px;
+}
+
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th {
+    background-color: #ffffff;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: solid;
+    padding: 10px;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+td {
+    padding: 10px;
+}

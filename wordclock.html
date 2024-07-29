@@ -1,0 +1,118 @@
+<head>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<h1 id="användarguide">Användarguide</h1>
+<p>I beskrivningarna nedan så används symbolen <code>1</code> för att ange ett tryck på den <em>övre</em> knappen och <code>2</code> för att ange ett tryck på den <em>undre</em> knappen.</p>
+<p>Klockan har tre olika typer inställningar:</p>
+<ul>
+<li><a href="#ställ-klockslag">klockslag</a></li>
+<li><a href="#ställ-datum">datum</a></li>
+<li><a href="#ställ-födelsedagar">födelsedagar</a></li>
+</ul>
+<p>Gemensamt för alla typer är att klockan måste sättas i ett konfigurationsläge innan du kan göra en ändring. Det gör du genom att i hyfsat snabbt tempo trycka en knappkombination som motsvarar den inställning du vill ändra, t.ex. <code>1</code> <code>2</code> <code>1</code> <code>2</code> för att ställa klockslaget. Direkt efter uppstart så befinner sig klockan i defaultläget och visar nuvarande klockslag. Om du har råkat slå in en ogiltig kombination eller tappade bort dig på vägen så vänta i ungefär fem sekunder så nollställs sekvensminnet och du kan börja om från början.</p>
+<h2 id="ställ-klockslag">Ställ klockslag</h2>
+<ol type="1">
+<li><p>Tryck <code>1</code> <code>2</code> <code>1</code> <code>2</code> för att påbörja inställningen av klockslag.</p></li>
+<li><p>Ställ nuvarande timme (minutintervallet påverkas inte)</p>
+<ul>
+<li>Tryck <code>1</code> för att gå fram en timme.</li>
+<li>Tryck <code>2</code> för att gå vidare till att ställa minutintervallet.</li>
+</ul></li>
+<li><p>Ställ minutintervallet (nuvarande timme påverkas inte)</p>
+<ul>
+<li>Tryck <code>1</code> för att gå fram till nästa femminutersintervall (sekunderna nollställs också).</li>
+<li>Tryck <code>2</code> för att avsluta och gå tillbaka till defaultläget.</li>
+</ul>
+<p>Strategin är alltså: vänta på att klockan ska slå ett jämt femminutersintervall och tryck på <code>1</code> tills intervallet precis före är valt. Tryck <code>1</code> en sista gång precis när klockan slår jämt. Avsluta med att trycka <code>2</code>.</p></li>
+</ol>
+<h2 id="representation-av-datum">Representation av datum</h2>
+<p>För datum så visualiseras delarna (år, månad och dag) i <em>binär</em> form på urtavlan med följande översättningstabell:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Ord</th>
+<th>Bit</th>
+<th>Värde</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>KVART</code></td>
+<td>7</td>
+<td>128</td>
+</tr>
+<tr class="even">
+<td><code>TIO</code></td>
+<td>6</td>
+<td>64</td>
+</tr>
+<tr class="odd">
+<td><code>ÖVER</code></td>
+<td>5</td>
+<td>32</td>
+</tr>
+<tr class="even">
+<td><code>ETT</code></td>
+<td>4</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td><code>FYRA</code></td>
+<td>3</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td><code>SJU</code></td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td><code>ELVA</code></td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td><code>TIO</code></td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Sammantaget bildar alltså orden längst till vänster på de åtta nedersta raderna ett 8-bitarstal som avläses ovanifrån. Om ett ord är tänt, så är motsvarande bit “satt” och dess värde ingår talet som presenteras.</p>
+<p>Exempel:</p>
+<ul>
+<li>För talet 0 lyser ingenting på urtavlan.</li>
+<li>För talet 25 lyser <code>ETT</code>, <code>SJU</code> och <code>TIO</code> på raden längst ner (16 + 8 + 1 = 25).</li>
+<li>För talet 15 så lyser <code>FYRA</code>, <code>SJU</code>, <code>ELVA</code> och <code>TIO</code> på raden längst ner (8 + 4 + 2 + 1 = 15).</li>
+</ul>
+<h2 id="ställ-datum">Ställ datum</h2>
+<p>Dagens datum, t.ex. 2024-07-29, måste först förenklas till 24-07-29 innan det skrivs in. Varje tvåsiffrigt tal (år, månad och dag) representeras sen binärt när det anges. Läs avsnittet ovan som beskriver hur talen visas på urtavlan.</p>
+<ol type="1">
+<li><p>Tryck <code>1</code> <code>1</code> <code>2</code> <code>2</code> för att påbörja inställningen av dagens datum.</p></li>
+<li><p>Ställ nuvarande årtal (månad och dag påverkas inte).</p>
+<ul>
+<li>Tryck <code>1</code> för att gå fram ett år.</li>
+<li>Tryck <code>2</code> för att gå vidare till att ställa nuvarande månad.</li>
+</ul></li>
+<li><p>Ställ nuvarande månad (årtal och dag påverkas inte).</p>
+<ul>
+<li>Tryck <code>1</code> för att gå fram en månad.</li>
+<li>Tryck <code>2</code> för att gå vidare till att ställa nuvarande dag.</li>
+</ul></li>
+<li><p>Ställ nuvarande dag (årtal och månad påverkas inte).</p>
+<ul>
+<li>Tryck <code>1</code> för att gå fram en dag.</li>
+<li>Tryck <code>2</code> för att avsluta och gå tillbaka till defaultläget.</li>
+</ul></li>
+</ol>
+<h2 id="ställ-födelsedagar">Ställ födelsedagar</h2>
+<p>Klockan kan komma ihåg upp till åtta unika datum som födelsedagsmeddelandet ska visas för. Meddelandet visas under det dygnets 24 timmar. Att lägga till, ta bort eller ändra en födelsedag sker på följande vis:</p>
+<ol type="1">
+<li><p>Tryck <code>2</code> <code>2</code> <code>1</code> <code>1</code> för att påbörja inställningen av födelsedagar.</p></li>
+<li><p>Välj vilken av de åtta minnesplatserna som ska ändras genom att ange ett tal i intervallet 0-7. Kom ihåg att för talet 0 så är urtavlan släckt.</p>
+<ul>
+<li>Tryck <code>1</code> för att gå fram till nästa minnesplats.</li>
+<li>Tryck <code>2</code> för att gå vidare till att ställa datumet för den valda minnesplatsen.</li>
+</ul></li>
+<li><p>Ställ datumet genom att följa steg 3 och 4 från avsnittet om <a href="#ställ-datum">datum</a>. Ett årtal ska alltså <em>inte</em> anges. Om en födelsedag ska tas bort så ställ <em>dagen</em> till 0 i steg 4.</p></li>
+</ol>
